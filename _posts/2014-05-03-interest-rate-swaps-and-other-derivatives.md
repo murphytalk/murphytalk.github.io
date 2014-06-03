@@ -63,9 +63,15 @@ If a payment were to fall on a bad day,the actual payment date will depend on th
 
 Appoximate the swap rate if its fixed leg does not pay semiannually on a 30/360 basis. It can be approximated by treating the fixed rate and pay frequecy as coupon and pay frequecy of a bond,and the future value of 2 types of rate/frequency should equal to each other otherwise there will be arbitrage.
 
-Covert an annual bond swap rate `r1` to an annual money swap rate `r2=360*r1/r2`.
+Covert an annual bond swap rate `r1` to an annual money swap rate \\( r_2=360 \times \frac{r_1}{r_2} \\).
 
-It can be generalized , see formula `(1.8)` and `(1.9)` at page 17.
+It can be generalized : if \\( s\_{xb} \\) is a swap rate paid `x` times per year on a bond basis, and \\( s\_{yb} \\) is the equivalent rate paid `y` times per year on a bond basis, then
+
+$$ s_{yb} \approx  y \times \left[\left(1+\frac{s_{xb}}{x}\right)^{\frac{x}{y}}-1\right] \tag{1.8}$$
+
+And given \\( s\_{yb} \\),we can approximate \\( s\_{ym} \\),the equivalent swap rate paid `y` times on a money basis as
+
+$$ s_{ym} \approx \frac{360}{365} \times s_{yb} \tag{1.9}$$
 
 ## Bid and Offer Swap Rates
 
