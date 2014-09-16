@@ -25,8 +25,10 @@ The attention will be restricted to swaps denominated in USD.
 
 1. `30/360` : also called "bond" because this is how bond traders calculates days usually.
 1. `Act/360` : also called "money"
-1. `Offer side spread ` : the lowest spread that a dealer is willing to add to the treasury yield to receive fixed rate.
-1. `Bid side spread` : the highest spread that a dealer is willing to add to the treasury yield to pay fixed rate.
+1. Offer and bid side spread
+    1. `Offer side spread ` : the lowest spread that a dealer is willing to add to the treasury yield to receive fixed rate.
+    1. `Bid side spread` : the highest spread that a dealer is willing to add to the treasury yield to pay fixed rate.
+    1. They are listed as `Offer/Bid` in the market.
 
 **Effective date** : start of swap
 
