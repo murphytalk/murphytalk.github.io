@@ -8,6 +8,10 @@ tags: [swap, finance, reading-notes]
   - [Pay Frequency and Day Count](#pay-frequency-and-day-count)
   - [Bid and Offer Swap Rates](#bid-and-offer-swap-rates)
   - [Repo](#repo)
+  - [Reset and Payments](#reset-and-payments)
+  - [OIS Swaps](#ois-swaps)
+  - [Basis Swaps](#basis-swaps)
+- [Examples](#examples)
   
 #An Introduction to Swap
 
@@ -122,3 +126,32 @@ When the swap dealer goes into the repo market to do a repo, it is a customer of
 
 Repo desks are market makers in repo and profit from the bid/offer repo rate spread . The bid side rate(at which repo desks earn interest) is higher than the offer side rate (at which they pay interest).
 
+## Reset and Payments
+
+USD swap's effective date (the date from which payments begin to accrue) is `T+2`. The resets and payments made on the LIBOR leg typically occur with "reset in advance,payment in arrears". For a USD swap, the standard convention is modified following, adjusted (the number of days that are accrued is altered in accordance witht he payment date).
+
+## OIS Swaps
+
+The floating leg in an OIS is tied to a reference overnight rate, which is Federal Funds effective rate for USD (TONA for JPY). The fixed leg in an OIS is referred to as the *OIS rate*. The OIS rate for a given maturity is often thought of as the expected Federal Funds rate over the term of the swap.
+
+The LIBOR-OIS spread is regarded as a proxy for the health of the financial system, it is thought the measure the risk premium that banks charge to lend to one another above and beyond the funds rate.
+
+## Basis Swaps
+
+Both legs are floating in a basis swap.
+
+Example : a `1s3s` (one threes) basis swap, a swap in which on counterparty pays 1-month LIBOR, and the other pays 3-month LIBOR. A dealer who is a market maker would agree to recieve the 1-month LIBOR plus 5 bps monthly and pay 3-month LIBOR quarterly, he is consider the offer side. The bid side of a basis swap would have the dealer paying 1-month plus a lower spread.
+
+# Examples
+
+Suppose a dearler is willing to :
+
+1. Pay 0.665% semi bonds (fixed leg, coupon freqeuncy 6-month) vs threes (3-month LIBOR)
+2. Recieve 0.705% semi bonds vs threes.
+3. Be a 3 bid and a 5 offer in a 1s3s basis swap fro 2 years.
+    1. Pay 1-month LIBOR +3 bps vs 3-month LIBOR
+    2. Recieve 1-month LIBOR +5 bps vs 3-month LIBOR
+
+If a client is interested in recieving fixed semi bond vs 1-month LIBOR for 2 years, what is the fixed rate expected from the dealer?
+
+First, the dearler's #1 + #3.2 flow equals to "pay 0.665% semi bonds vs 1-month LIBOR +5 bps", which can be considered same as "pay 0.665% semi bond- 5bps vs 1-month LIBOR = pay 0.615% semi bond vs 1-month LIBOR". So 0.615% is the fixed rate the dealer would quote to the client.
