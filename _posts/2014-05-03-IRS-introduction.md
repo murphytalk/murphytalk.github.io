@@ -1,5 +1,6 @@
 ---
 layout: post
+title: IRS - An Introduction to Swap
 category: finance 
 tags: [swap, finance, reading-notes]
 ---
