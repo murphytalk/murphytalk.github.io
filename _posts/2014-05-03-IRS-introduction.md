@@ -64,7 +64,7 @@ If a payment were to fall on a bad day,the actual payment date will depend on th
 1. *following* the next good day 
 1. *modified following* if the next good day happens to fall in the subsequent month then fail over to the preceding good day.
 
-### Tresury and bond market
+### Treasury and bond market
 
 - On-the-run : the most recently issued
 - (Single) old : the one issued before on-the-run
@@ -78,7 +78,7 @@ Approximate the swap rate if its fixed leg does not pay semiannually on a 30/360
 
 Covert an annual bond swap rate `r1` to an annual money swap rate \\(r_2=360 \times \frac{r_1}{r_2}\\) .
 
-It can be generalised : if \\(s\_{xb}\\) is a swap rate paid `x` times per year on a bond basis, and \\(s\_{yb}\\) is the equivalent rate paid `y` times per year on a bond basis, then
+It can be generalized : if \\(s\_{xb}\\) is a swap rate paid `x` times per year on a bond basis, and \\(s\_{yb}\\) is the equivalent rate paid `y` times per year on a bond basis, then
 
 $$ s_{yb} \approx  y \times \left[\left(1+\frac{s_{xb}}{x}\right)^{\frac{x}{y}}-1\right] \tag{1.8}$$
 
@@ -110,26 +110,26 @@ Trader enters a *repurchase agreement* in the repo market to raise money. A repo
 Length of repo:
 
  - **overnight**
- - **term** : a specified period of thime of more than one day
+ - **term** : a specified period of time of more than one day
      - **to-the-date** : to the settlement date of the next Treasury of the same maturity series that will be issued.
- - **open** : a nonspecified period of time of more than one day 
+ - **open** : a non-specified period of time of more than one day 
 
-The counterparty who delivered the securities in exchange for cash in the repo is entitled to securities' coupon interest.
+The counter-party who delivered the securities in exchange for cash in the repo is entitled to securities' coupon interest.
 
-When the avialbilty of a particular security is relatively low, and the demand to take the delivery of the particular security in a reverse repo is relatively high, this imbalance manifests itself by putting downward pressure on repo rates. Such Treasuries are said to be *trading special*. On-the-run Treasury securities typically trade special in the repo market.
+When the availability of a particular security is relatively low, and the demand to take the delivery of the particular security in a reverse repo is relatively high, this imbalance manifests itself by putting downward pressure on repo rates. Such Treasuries are said to be *trading special*. On-the-run Treasury securities typically trade special in the repo market.
 
-Often repos are subject to *haircut* by dealers, which stipulate that the borrower receives an amount of cash lower than the value of the securities delivered as collateral. This protects the dealer in case the borrower defaults and the the value of the pledged securites should fall, in which case liquidating the bonds wond not make the dealer whole.
+Often repos are subject to *haircut* by dealers, which stipulate that the borrower receives an amount of cash lower than the value of the securities delivered as collateral. This protects the dealer in case the borrower defaults and the the value of the pledged securities should fall, in which case liquidating the bonds wound not make the dealer whole.
 
 When the swap dealer goes into the repo market to do a repo, it is a customer of the repo market and will have to transact at 
 
  - *bid side repo rate* : taking in cash and delivering securities
- - *offer side repo rate* : providing cash and taking in securites
+ - *offer side repo rate* : providing cash and taking in securities
 
 Repo desks are market makers in repo and profit from the bid/offer repo rate spread . The bid side rate(at which repo desks earn interest) is higher than the offer side rate (at which they pay interest).
 
 ## Reset and Payments
 
-USD swap's effective date (the date from which payments begin to accrue) is `T+2`. The resets and payments made on the LIBOR leg typically occur with "reset in advance,payment in arrears". For a USD swap, the standard convention is modified following, adjusted (the number of days that are accrued is altered in accordance witht he payment date).
+USD swap's effective date (the date from which payments begin to accrue) is `T+2`. The resets and payments made on the LIBOR leg typically occur with "reset in advance,payment in arrears". For a USD swap, the standard convention is modified following, adjusted (the number of days that are accrued is altered in accordance with he payment date).
 
 ## OIS Swaps
 
@@ -141,18 +141,18 @@ The LIBOR-OIS spread is regarded as a proxy for the health of the financial syst
 
 Both legs are floating in a basis swap.
 
-Example : a `1s3s` (one threes) basis swap, a swap in which on counterparty pays 1-month LIBOR, and the other pays 3-month LIBOR. A dealer who is a market maker would agree to recieve the 1-month LIBOR plus 5 bps monthly and pay 3-month LIBOR quarterly, he is consider the offer side. The bid side of a basis swap would have the dealer paying 1-month plus a lower spread.
+Example : a `1s3s` (one threes) basis swap, a swap in which on counter-party pays 1-month LIBOR, and the other pays 3-month LIBOR. A dealer who is a market maker would agree to receive the 1-month LIBOR plus 5 bps monthly and pay 3-month LIBOR quarterly, he is consider the offer side. The bid side of a basis swap would have the dealer paying 1-month plus a lower spread.
 
 # Examples
 
-Suppose a dearler is willing to :
+Suppose a dealer is willing to :
 
-1. Pay 0.665% semi bonds (fixed leg, coupon freqeuncy 6-month) vs threes (3-month LIBOR)
-2. Recieve 0.705% semi bonds vs threes.
+1. Pay 0.665% semi bonds (fixed leg, coupon frequency 6-month) vs threes (3-month LIBOR)
+2. Receive 0.705% semi bonds vs threes.
 3. Be a 3 bid and a 5 offer in a 1s3s basis swap fro 2 years.
     1. Pay 1-month LIBOR +3 bps vs 3-month LIBOR
-    2. Recieve 1-month LIBOR +5 bps vs 3-month LIBOR
+    2. Receive 1-month LIBOR +5 bps vs 3-month LIBOR
 
-If a client is interested in recieving fixed semi bond vs 1-month LIBOR for 2 years, what is the fixed rate expected from the dealer?
+If a client is interested in receiving fixed semi bond vs 1-month LIBOR for 2 years, what is the fixed rate expected from the dealer?
 
 First, the dearler's #1 + #3.2 flow equals to "pay 0.665% semi bonds vs 1-month LIBOR +5 bps", which can be considered same as "pay 0.665% semi bond- 5bps vs 1-month LIBOR = pay 0.615% semi bond vs 1-month LIBOR". So 0.615% is the fixed rate the dealer would quote to the client.
