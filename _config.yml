@@ -5,8 +5,9 @@ permalink: /:categories/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
 
-markdown: GFM
-
+markdown: kramdown
+kramdown:
+          input: GFM
 # The title and tagline is showed on homepage
 #
 title :  murphytalk's
