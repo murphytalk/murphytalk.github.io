@@ -8,6 +8,14 @@ tags: [scheme,lisp,SICP]
 It looks it would be easier to go through [The Little Schemer](https://mitpress.mit.edu/books/little-schemer) first before pick up SICP, so here we go.
 
 
+```ruby
+# This is highlighted code
+def foo
+  puts 'foo'
+end
+```
+
+
 `atom` is the most basic building block,  it could be a letter, a string of digits, a string of characters.  Examples:
 
 
@@ -20,6 +28,7 @@ atom
 
 
 `list` is one or more atom enclosed by parentheses. Examples:
+
 
 ```scheme
 (atom)
