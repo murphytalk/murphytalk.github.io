@@ -33,4 +33,6 @@ If `l` is `((b) (x y) ((c)))`, more examples:
 
 The `cons` of the atom `a` and the list `l` where a is `peanut` and`l` is `(butter and jelly)` is `(peanut butter and jelly)`, it reads *cons the atom a onto the list l*. What it does is to add a s-expression to the front of a list (or it takes two arguments:the first one is any S-expression; the second one is any list). So the `cons` of `s` and `l` where `s` is `(banana and)` and `l` is `(peanut butter and jelly)` is `((banana and) peanut butter and jelly)`.
 
+Read more on [Wikipedia](http://en.wikipedia.org/wiki/CAR_and_CDR).
+
 
