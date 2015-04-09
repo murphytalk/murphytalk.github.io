@@ -37,7 +37,7 @@ search :
   # Your Google custom search engine ID
   #
   gcse :
-    cx : 004255214185073801838:_icnlls8kds
+      cx : 002794098822158760022:yvdahhyfhec
   
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -47,7 +47,7 @@ search :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://simpleyyt.github.io
+production_url : http://murphytalk.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
