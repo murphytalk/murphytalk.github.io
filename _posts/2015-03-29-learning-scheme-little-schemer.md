@@ -2,7 +2,7 @@
 layout: post
 title: Learning Scheme - atom, list and S-expression
 category: computer
-tags: [scheme,lisp,SICP]
+tags: [scheme,lisp]
 ---
 
 It looks it would be easier to go through [The Little Schemer](https://mitpress.mit.edu/books/little-schemer) first before pick up SICP, so here we go.

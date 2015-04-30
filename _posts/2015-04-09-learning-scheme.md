@@ -2,7 +2,7 @@
 layout: post
 title: Learning Scheme - car, cdr and cons
 category: computer
-tags: [scheme,lisp,SICP]
+tags: [scheme,lisp]
 ---
 
 `car` is the first S-expression of this **non-empty** list. 

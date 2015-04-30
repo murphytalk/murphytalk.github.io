@@ -29,7 +29,7 @@ a1 and a2 are the same atom where a1 is Harry and a2 is Harry. The following ret
 ```scheme
 (eq? a1 a2)
 ```
-Note it is `e	q` in Common Lisp.
+Note it is `eq` in Common Lisp.
 
 Both of the parameters must be *non-numeric* atoms.
 
