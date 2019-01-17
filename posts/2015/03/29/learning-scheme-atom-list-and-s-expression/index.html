@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Learning Scheme - atom, list and S-expression - murphytalk's digitized memo</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://murphytalk.github.io/posts/2015/03/29/learning-scheme-atom-list-and-s-expression/">
+
+        <meta name="author" content="Mu Lu" />
+        <meta name="keywords" content="scheme,lisp" />
+        <meta name="description" content="It looks it would be easier to go through The Little Schemer first before pick up SICP, so here we go. atom is the most basic building block, it could be a letter, a string of digits, a string of characters. Examples: a 1492 atom *abc$ list is one or …" />
+
+        <meta property="og:site_name" content="murphytalk's digitized memo" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Learning Scheme - atom, list and S-expression"/>
+        <meta property="og:url" content="http://murphytalk.github.io/posts/2015/03/29/learning-scheme-atom-list-and-s-expression/"/>
+        <meta property="og:description" content="It looks it would be easier to go through The Little Schemer first before pick up SICP, so here we go. atom is the most basic building block, it could be a letter, a string of digits, a string of characters. Examples: a 1492 atom *abc$ list is one or …"/>
+        <meta property="article:published_time" content="2015-03-29" />
+            <meta property="article:section" content="computer" />
+            <meta property="article:tag" content="scheme" />
+            <meta property="article:tag" content="lisp" />
+            <meta property="article:author" content="Mu Lu" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@murphytalk">
+        <meta name="twitter:creator" content="@murphytalk">
+    <meta name="twitter:domain" content="http://murphytalk.github.io">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://murphytalk.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://murphytalk.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://murphytalk.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="http://murphytalk.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+        <link href="http://murphytalk.github.io/theme/css/typogrify.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://murphytalk.github.io/theme/css/style.css" type="text/css"/>
+        <link href="http://murphytalk.github.io/static/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://murphytalk.github.io/" class="navbar-brand">
+murphytalk's digitized memo            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="http://murphytalk.github.io/category/computer.html">Computer</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="http://murphytalk.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-xl-10">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://murphytalk.github.io/posts/2015/03/29/learning-scheme-atom-list-and-s-expression/"
+                       rel="bookmark"
+                       title="Permalink to Learning Scheme - atom, list and S-expression">
+                        Learning Scheme - atom, list and&nbsp;S-expression
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-03-29T22:00:00+09:00"> Sun March 29 2015</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://murphytalk.github.io/tag/scheme.html">scheme</a>
+        /
+	<a href="http://murphytalk.github.io/tag/lisp.html">lisp</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>It looks it would be easier to go through <a href="https://mitpress.mit.edu/books/little-schemer">The Little Schemer</a> first before pick up <span class="caps">SICP</span>, so here we&nbsp;go.</p>
+<p><code>atom</code> is the most basic building block,  it could be a letter, a string of digits, a string of characters.&nbsp;Examples:</p>
+<div class="highlight"><pre><span></span><span class="nv">a</span>
+<span class="mi">1492</span>
+<span class="nv">atom</span>
+<span class="nv">*abc$</span>
+</pre></div>
+
+
+<p><code>list</code> is one or more atom enclosed by parentheses.&nbsp;Examples:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">atom</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">atom</span> <span class="nv">turkey</span> <span class="nv">or</span><span class="p">)</span>
+<span class="p">((</span><span class="nf">atom</span> <span class="nv">turkey</span><span class="p">)</span> <span class="nv">or</span><span class="p">)</span>
+</pre></div>
+
+
+<p>All atoms and all lists are <a href="http://en.wikipedia.org/wiki/S-expression">S-expression</a>s. For example, there are three S-expressions in the following example&nbsp;:</p>
+<div class="highlight"><pre><span></span><span class="p">(((</span><span class="nf">how</span><span class="p">)</span> <span class="nv">are</span><span class="p">)</span> <span class="p">((</span><span class="nf">you</span><span class="p">)</span> <span class="p">(</span><span class="nf">doing</span> <span class="nv">so</span><span class="p">))</span> <span class="nv">far</span><span class="p">)</span>
+</pre></div>
+
+
+<p>They are <code>((how) are)</code>,<code>((you) (doing so))</code> and <code>far</code>.</p>
+<p>The <code>null</code> S-expression:</p>
+<div class="highlight"><pre><span></span><span class="p">()</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 col-xl-2" id="sidebar">
+            <aside>
+
+<section>
+    <div class="sidebar-container">
+
+<div class="text-center" id="social">
+            <ul class="list-inline social-buttons">
+                <li>
+                    <a href="http://twitter.com/murphytalk" target="_blank"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="http://www.facebook.com/murphytalk" target="_blank"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/+LuMu-happy" target="_blank"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li>
+                    <a href="http://github.com/murphytalk" target="_blank"><i class="fa fa-github"></i></a>
+                </li>
+                <li>
+                    <a href="http://bitbucket.org/murphytalk" target="_blank"><i class="fa fa-bitbucket"></i></a>
+                </li>
+                <li>
+                    <a href="http://www.linkedin.com/in/murphytalk" target="_blank"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+</div>
+<div class="sidebar-item ">
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h4>
+<a href="http://murphytalk.github.io/tags.html"><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></a>
+        </h4>
+    </div>
+<div class="panel-body">
+    <ul class="list-group list-inline tagcloud" id="tags">
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/devops.html">
+                    devops <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/python.html">
+                    python <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/jupyter.html">
+                    Jupyter <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/pandas.html">
+                    Pandas <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/daydream.html">
+                    DayDream <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/chatops.html">
+                    ChatOps <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/anki.html">
+                    anki <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/bot.html">
+                    bot <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/coffeescript.html">
+                    CoffeeScript <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/scheme.html">
+                    scheme <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/lisp.html">
+                    lisp <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/sicp.html">
+                    SICP <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/windows.html">
+                    Windows <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/linux.html">
+                    Linux <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/english.html">
+                    English <sup> 1</sup>
+                </a>
+            </li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+    </div>
+    <div class="panel-body">
+        <li class="list-group-item">
+            <ul class="list-group" id="links">
+                <li class="list-group-item">
+                    <a href="http://murphytalk.pythonanywhere.com" target="_blank">
+                        <i class="fa fa-book fa-lg"></i>&nbsp;&nbsp;&nbsp;My Knowledge Base
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://murphytalk.vicp.net/diary" target="_blank">
+                        <i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;My Private Diary
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://murphytalk.vicp.net" target="_blank">
+                        <i class="fa fa-anchor fa-lg"></i>&nbsp;&nbsp;&nbsp;My Online Portal
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </div>
+</div>
+
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group" id="recentposts">
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2019/01/15/mattermost-a-promising-alternative-to-slack/">
+                                    2019-01-15&nbsp;&nbsp;&nbsp;Mattermost: a promising alternative to Slack&nbsp;?
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/08/04/add-line-number-in-jupyter-notebook-code-cell-by-default/">
+                                    2016-08-04&nbsp;&nbsp;&nbsp;Add line number in Jupyter Notebook code cell by&nbsp;default
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/07/13/pandas-101/">
+                                    2016-07-13&nbsp;&nbsp;&nbsp;Pandas&nbsp;101
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/06/30/a-piece-of-old-software-of-mine/">
+                                    2016-06-30&nbsp;&nbsp;&nbsp;A piece of old software of&nbsp;mine
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/06/22/chatops-with-hubot-anki-automation/">
+                                    2016-06-22&nbsp;&nbsp;&nbsp;ChatOps with Hubot - Anki&nbsp;automation
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2015/03/29/learning-scheme-atom-list-and-s-expression/">
+                                    2015-03-29&nbsp;&nbsp;&nbsp;Learning Scheme - atom, list and&nbsp;S-expression
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2015/03/28/learning-scheme-setup-the-environment/">
+                                    2015-03-28&nbsp;&nbsp;&nbsp;Learning Scheme - setup the&nbsp;environment
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2014/06/29/solved-windows-cannot-sleep-on-a-windowslinux-dual-boot-pc/">
+                                    2014-06-29&nbsp;&nbsp;&nbsp;Solved : Windows cannot sleep on a Windows/Linux dual boot <span class="caps">PC</span>
+                                </a>
+                            </li>
+                        <li class="list-group-item">
+                            <a href="http://murphytalk.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+    </div>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2019 Mu Lu
+            &middot; Powered by <a href="https://github.com/murphytalk/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://murphytalk.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://murphytalk.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://murphytalk.github.io/theme/js/respond.min.js"></script>
+
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=murphytalk"></script>
+    <script>
+     $(document).ready(function(){
+         //override the ipyhon notebook code area background color
+         $("div.input_area").css("background-color", "#333");
+         $("div.input_area > div.highlight").css("background-color", "#333");
+     });
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>ChatOps with Hubot - Anki automation - murphytalk's digitized memo</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://murphytalk.github.io/posts/2016/06/22/chatops-with-hubot-anki-automation/">
+
+        <meta name="author" content="Mu Lu" />
+        <meta name="keywords" content="ChatOps,anki,bot,CoffeeScript" />
+        <meta name="description" content="Well, the very topic of ChatOps has already been discussed at length by many people, so I am gonna jump to my very first ChatOps with Hubot right away. First : the motivation. I discovered Anki quite a while ago, it has been helping me to expand and improve my English …" />
+
+        <meta property="og:site_name" content="murphytalk's digitized memo" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="ChatOps with Hubot - Anki automation"/>
+        <meta property="og:url" content="http://murphytalk.github.io/posts/2016/06/22/chatops-with-hubot-anki-automation/"/>
+        <meta property="og:description" content="Well, the very topic of ChatOps has already been discussed at length by many people, so I am gonna jump to my very first ChatOps with Hubot right away. First : the motivation. I discovered Anki quite a while ago, it has been helping me to expand and improve my English …"/>
+        <meta property="article:published_time" content="2016-06-22" />
+            <meta property="article:section" content="computer" />
+            <meta property="article:tag" content="ChatOps" />
+            <meta property="article:tag" content="anki" />
+            <meta property="article:tag" content="bot" />
+            <meta property="article:tag" content="CoffeeScript" />
+            <meta property="article:author" content="Mu Lu" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@murphytalk">
+        <meta name="twitter:creator" content="@murphytalk">
+    <meta name="twitter:domain" content="http://murphytalk.github.io">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://murphytalk.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://murphytalk.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://murphytalk.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="http://murphytalk.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+        <link href="http://murphytalk.github.io/theme/css/typogrify.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://murphytalk.github.io/theme/css/style.css" type="text/css"/>
+        <link href="http://murphytalk.github.io/static/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://murphytalk.github.io/" class="navbar-brand">
+murphytalk's digitized memo            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="http://murphytalk.github.io/category/computer.html">Computer</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="http://murphytalk.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-xl-10">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://murphytalk.github.io/posts/2016/06/22/chatops-with-hubot-anki-automation/"
+                       rel="bookmark"
+                       title="Permalink to ChatOps with Hubot - Anki automation">
+                        ChatOps with Hubot - Anki&nbsp;automation
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-06-22T23:40:00+09:00"> Wed June 22 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://murphytalk.github.io/tag/chatops.html">ChatOps</a>
+        /
+	<a href="http://murphytalk.github.io/tag/anki.html">anki</a>
+        /
+	<a href="http://murphytalk.github.io/tag/bot.html">bot</a>
+        /
+	<a href="http://murphytalk.github.io/tag/coffeescript.html">CoffeeScript</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Well, the very topic of <a href="https://www.google.co.jp/?ion=1&amp;espv=2#q=chatops">ChatOps</a> has already been discussed at length by many people, so I am gonna jump to my very first ChatOps with Hubot  right&nbsp;away.</p>
+<p>First : the&nbsp;motivation.</p>
+<p>I discovered <a href="https://en.wikipedia.org/wiki/Anki_(software)">Anki</a> quite a while ago, it has been helping me to expand and improve my English vocabulary - and my kid&#8217;s Chinese vocabulary as well. It comes with a mobile app (only the <a href="https://play.google.com/store/apps/details?id=com.ichi2.anki&amp;hl=en">Android version</a> is free, but I am sure Apple fanboys won&#8217;t mind to pay extra for their beloved iPhone) which is handy, but still whenever I wanted to add a new word that I bumped into during my reading, it does not feel that convenient: You know what I mean if you have ever tried to manually add a new word to&nbsp;Anki.</p>
+<p>Enter <a href="https://github.com/dsnopek/anki-sync-server">anki-sync-server</a>.</p>
+<p>In short, it is a private Anki sync server, and most beautifully, it comes with a super cool (but badly documented) <a href="https://github.com/dsnopek/anki-sync-server/wiki/RESTful-API-Documentation">RESTful <span class="caps">API</span></a> which makes automation possible. And being a lazy engineer, I love to automate&nbsp;things.</p>
+<p>Well, to be fair, the document is not that bad if you read <a href="https://github.com/dsnopek/anki-sync-server/blob/master/AnkiServer/apps/rest_app.py">the code</a> very carefully. Here&#8217;s what I&#8217;ve figured&nbsp;out.</p>
+<ol>
+<li>Collection - the name is kind of miss leading in my opinion. Actually, the collection name is just your user&nbsp;name.</li>
+<li>All requests must be sent as <span class="caps">POST</span>.</li>
+<li>Anki manages words by using notes: a note is where you put your new word and its explanation etc. You only add note but not card, the latter  is generated by Anki automatically to reflect on side of the note (remember you can have reversed&nbsp;card).</li>
+</ol>
+<p>Use <code>wget</code> to try some quick&nbsp;examples.</p>
+<p>List all&nbsp;decks:</p>
+<div class="highlight"><pre><span></span>wget --post-data<span class="o">=</span><span class="s1">&#39;{}&#39;</span>  --header <span class="s2">&quot;Accept: application/json&quot;</span> http://127.0.0.1:27701/collection/username/list_deck
+</pre></div>
+
+
+<p>List all models (card&nbsp;types):</p>
+<div class="highlight"><pre><span></span>wget --post-data<span class="o">=</span><span class="s1">&#39;{}&#39;</span>  --header <span class="s2">&quot;Accept: application/json&quot;</span> http://127.0.0.1:27701/collection/username/list_models
+</pre></div>
+
+
+<p>Finally, my goal : add a new word as&nbsp;note</p>
+<div class="highlight"><pre><span></span>wget --post-data<span class="o">=</span><span class="s1">&#39;{&quot;model&quot;:&quot;English&quot;,&quot;fields&quot;:{&quot;Word&quot;:&quot;exasperate&quot;,&quot;Meaning&quot;:&quot;irritate intensely; infuriate&quot;,&quot;Phonetic&quot;:&quot;/ɪɡˈzasp(ə)reɪt,ɛɡ-/&quot;,&quot;Reverse&quot;:&quot;y&quot;}}&#39;</span>  --header <span class="s2">&quot;Accept: application/json&quot;</span> http://127.0.0.1:27701/collection/username/add_note
+</pre></div>
+
+
+<p>Next: the&nbsp;goal.</p>
+<p>With the logistics being sorted out, here&#8217;s the deal : next time when a new word finds me, I will paste it to my slack channel where my bot is waiting for commands, and I want my bot to figure out the new word&#8217;s meaning, pronunciation, along with examples, and add them to my private Anki server automatically. All I need to do later is to sync my Anki app with the&nbsp;server.</p>
+<p>Obviously my bot would need a dictionary, and lucky for him the <a href="http://developer.pearson.com/apis/dictionaries">Longman dictionary <span class="caps">API</span></a> is free for up to 4,000,000 calls per month (Thank you! Pearson Inc&nbsp;!!).</p>
+<p>Again, a quick <code>wget</code> dry&nbsp;run:</p>
+<div class="highlight"><pre><span></span>wget --header <span class="s2">&quot;Accept: application/json&quot;</span> http://api.pearson.com/v2/dictionaries/ldoce5/entries?headword<span class="o">=</span>exasperate
+</pre></div>
+
+
+<p><code>ldoce5</code> is the <span class="caps">ID</span> of Longman Dictionary of Contemporary English. Note <code>GET</code> is used. Multiple results will be returned as a <span class="caps">JSON</span> object. So that&#8217;s everything we need to automate the task, let&#8217;s teach my bot the&nbsp;trick.</p>
+<p>My bot is a <a href="https://hubot.github.com/">Hubot</a>, commissioned by GitHub (who, by the way, also coined the term ChatOps). I am pretty sure the original author must be one of those front-end guys who just invaded the back-end territory, because the language he or she chose to write Hubot is  <a href="https://en.wikipedia.org/wiki/CoffeeScript">CoffeeScript</a>, which is not only a bad name play of JavaScript, but also compiled to&nbsp;JavaScript. </p>
+<p>The bot uses adapter to listen command (which is basically a string of text), then it launches scripts you write to parse the command, and executes the corresponding logic if the command is recognized. I will teach my bot two commands&nbsp;:</p>
+<ul>
+<li><code>dict &lt;word&gt;</code> when the bot sees this command, it will <ol>
+<li>use <code>&lt;word&gt;</code> to query the dictionary <span class="caps">API</span></li>
+<li>parse the&nbsp;results</li>
+<li>group the answers(there could be more than one) into explanations, pronunciations and&nbsp;examples</li>
+<li>show the&nbsp;answers.</li>
+</ol>
+</li>
+<li><code>anki &lt;word&gt;</code> same as <code>dict</code>, but the answer will also be added to my private Anki sync&nbsp;server.</li>
+</ul>
+<p>Please refer to <a href="https://github.com/murphytalk/mubot/blob/master/scripts/anki.coffee">this little CoffeeScript</a> for the implementation. Please note this is the virgin piece of CoffeeScript of mine, I have every right to be lousy and clumsy&nbsp;:)</p>
+<p>What&#8217;s left is to connect my bot with Slack and join my team (called <em>Under Lu&#8217;s Roof</em>, it&#8217;s obviously meant for family business). This is no-brainer as people in the Hubot community have contributed all sorts of adapters including <a href="https://github.com/slackhq/hubot-slack">Hubot Slack</a>. It has some limits : the bot cannot receive direct message ; and it has to be invited into a channel first, etc. but&nbsp;manageable.</p>
+<p>Finally, let&#8217;s put it&nbsp;action:</p>
+<p><img alt="Bot in Slack" src="http://murphytalk.github.io/images/hubot-anki.png" class="img-responsive center-block"/></p>
+<p>Added ! Then I sync in the Anki&nbsp;app:</p>
+<p><img alt="Anki app" src="http://murphytalk.github.io/images/anki.png" class="img-responsive center-block"/></p>
+<p>Isn&#8217;t that neat&nbsp;!?</p>
+<p>Oh, did I mention that Anki is also being used to help my kid with his Chinese vocabulary? I couldn&#8217;t find a good online source to look for Chinese character&#8217;s pronunciation (namely Pinyin), so I wrote a small Python script to do the trick: it outputs pinyin with tune, and the traditional Chinese form if there is any. Will teach my bot this trick for sure&nbsp;!</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 col-xl-2" id="sidebar">
+            <aside>
+
+<section>
+    <div class="sidebar-container">
+
+<div class="text-center" id="social">
+            <ul class="list-inline social-buttons">
+                <li>
+                    <a href="http://twitter.com/murphytalk" target="_blank"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="http://www.facebook.com/murphytalk" target="_blank"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/+LuMu-happy" target="_blank"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li>
+                    <a href="http://github.com/murphytalk" target="_blank"><i class="fa fa-github"></i></a>
+                </li>
+                <li>
+                    <a href="http://bitbucket.org/murphytalk" target="_blank"><i class="fa fa-bitbucket"></i></a>
+                </li>
+                <li>
+                    <a href="http://www.linkedin.com/in/murphytalk" target="_blank"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+</div>
+<div class="sidebar-item ">
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h4>
+<a href="http://murphytalk.github.io/tags.html"><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></a>
+        </h4>
+    </div>
+<div class="panel-body">
+    <ul class="list-group list-inline tagcloud" id="tags">
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/devops.html">
+                    devops <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/python.html">
+                    python <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/jupyter.html">
+                    Jupyter <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/pandas.html">
+                    Pandas <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/daydream.html">
+                    DayDream <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/chatops.html">
+                    ChatOps <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/anki.html">
+                    anki <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/bot.html">
+                    bot <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/coffeescript.html">
+                    CoffeeScript <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/scheme.html">
+                    scheme <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-1">
+                <a href="http://murphytalk.github.io/tag/lisp.html">
+                    lisp <sup> 2</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/sicp.html">
+                    SICP <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/windows.html">
+                    Windows <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/linux.html">
+                    Linux <sup> 1</sup>
+                </a>
+            </li>
+            <li class="list-group-item tag-4">
+                <a href="http://murphytalk.github.io/tag/english.html">
+                    English <sup> 1</sup>
+                </a>
+            </li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+    </div>
+    <div class="panel-body">
+        <li class="list-group-item">
+            <ul class="list-group" id="links">
+                <li class="list-group-item">
+                    <a href="http://murphytalk.pythonanywhere.com" target="_blank">
+                        <i class="fa fa-book fa-lg"></i>&nbsp;&nbsp;&nbsp;My Knowledge Base
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://murphytalk.vicp.net/diary" target="_blank">
+                        <i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;My Private Diary
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://murphytalk.vicp.net" target="_blank">
+                        <i class="fa fa-anchor fa-lg"></i>&nbsp;&nbsp;&nbsp;My Online Portal
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </div>
+</div>
+
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group" id="recentposts">
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2019/01/15/mattermost-a-promising-alternative-to-slack/">
+                                    2019-01-15&nbsp;&nbsp;&nbsp;Mattermost: a promising alternative to Slack&nbsp;?
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/08/04/add-line-number-in-jupyter-notebook-code-cell-by-default/">
+                                    2016-08-04&nbsp;&nbsp;&nbsp;Add line number in Jupyter Notebook code cell by&nbsp;default
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/07/13/pandas-101/">
+                                    2016-07-13&nbsp;&nbsp;&nbsp;Pandas&nbsp;101
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/06/30/a-piece-of-old-software-of-mine/">
+                                    2016-06-30&nbsp;&nbsp;&nbsp;A piece of old software of&nbsp;mine
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2016/06/22/chatops-with-hubot-anki-automation/">
+                                    2016-06-22&nbsp;&nbsp;&nbsp;ChatOps with Hubot - Anki&nbsp;automation
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2015/03/29/learning-scheme-atom-list-and-s-expression/">
+                                    2015-03-29&nbsp;&nbsp;&nbsp;Learning Scheme - atom, list and&nbsp;S-expression
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2015/03/28/learning-scheme-setup-the-environment/">
+                                    2015-03-28&nbsp;&nbsp;&nbsp;Learning Scheme - setup the&nbsp;environment
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="http://murphytalk.github.io/posts/2014/06/29/solved-windows-cannot-sleep-on-a-windowslinux-dual-boot-pc/">
+                                    2014-06-29&nbsp;&nbsp;&nbsp;Solved : Windows cannot sleep on a Windows/Linux dual boot <span class="caps">PC</span>
+                                </a>
+                            </li>
+                        <li class="list-group-item">
+                            <a href="http://murphytalk.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+    </div>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2019 Mu Lu
+            &middot; Powered by <a href="https://github.com/murphytalk/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://murphytalk.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://murphytalk.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://murphytalk.github.io/theme/js/respond.min.js"></script>
+
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=murphytalk"></script>
+    <script>
+     $(document).ready(function(){
+         //override the ipyhon notebook code area background color
+         $("div.input_area").css("background-color", "#333");
+         $("div.input_area > div.highlight").css("background-color", "#333");
+     });
+    </script>
+</body>
+</html>

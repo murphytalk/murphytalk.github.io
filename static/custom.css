@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
+
+/***** Global *****/
+/* Body */
+body {
+    font-family: 'Trebuchet MS', Trebuchet, 'Slabo 27px','Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+}
+
+.social-buttons {
+    font-size: 24px;
+}
+
+.list-group-item {
+    padding: 5px 2px;
+}
